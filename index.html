@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Свадебный салон «Палантин» — Краснодар</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Салон «Палантин»</h1>
+      <p>Свадебные платья мечты в Краснодаре</p>
+      <a href="#catalog" class="btn">Посмотреть коллекцию</a>
+    </div>
+  </header>
+
+  <section class="filters-panel">
+    <div class="container">
+      <h3>Фильтры</h3>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Дизайнер</label>
+          <select id="filter-designer"><option value="">Все дизайнеры</option></select>
+        </div>
+
+        <div class="filter-group">
+          <label>Силуэт</label>
+          <select id="filter-silhouette"><option value="">Все</option></select>
+        </div>
+
+        <div class="filter-group">
+          <label>Цвет</label>
+          <select id="filter-color"><option value="">Любой</option></select>
+        </div>
+
+        <div class="filter-group">
+          <label>Размер</label>
+          <select id="filter-size"><option value="">Любой</option></select>
+        </div>
+
+        <div class="filter-group">
+          <label>Цена от</label>
+          <input type="number" id="price-min" placeholder="10000">
+          <label>до</label>
+          <input type="number" id="price-max" placeholder="160000">
+        </div>
+
+        <button onclick="applyFilters()">Применить</button>
+        <button onclick="resetFilters()">Сбросить</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog" id="catalog">
+    <div class="container">
+      <h2>Коллекция свадебных платьев</h2>
+      <div class="products" id="products">
+        Загрузка...
+      </div>
+    </div>
+  </section>
+
+  <section class="cart-section">
+    <div class="container">
+      <h2>Корзина</h2>
+      <div id="cart-items">Корзина пуста</div>
+      <p><strong>Итого: <span id="total">0</span> ₽</strong></p>
+      <button id="checkout-btn" onclick="showForm()">Оформить заявку</button>
+    </div>
+  </section>
+
+  <section class="form-section" id="order-form" style="display: none;">
+    <div class="container">
+      <h2>Оставить заявку</h2>
+      <form id="checkout-form">
+        <label>Имя *</label>
+        <input type="text" name="name" required />
+
+        <label>Телефон *</label>
+        <input type="tel" name="phone" required />
+
+        <label>Email</label>
+        <input type="email" name="email" />
+
+        <label>Комментарий (например, интересует примерка)</label>
+        <textarea name="comment"></textarea>
+
+        <button type="submit">Отправить заявку</button>
+      </form>
+      <button onclick="hideForm()">Назад</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Салон «Палантин» — свадебные платья в Краснодаре</p>
+      <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
