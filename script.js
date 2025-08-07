@@ -6,26 +6,29 @@ let cart = [];
 Papa.parse(CSV_URL, {
   download: true,
   header: true,
+  skipEmptyLines: true,
   complete: function(results) {
     products = results.data.map(p => ({
       id: p.id,
-      name: p.name,
+      name: p.name.replace(/""/g, '"'), // Починка кавычек
       model: p.model,
-      price: parseInt(p.price),
-      designer: p.designer.split(',').map(s => s.trim()),
-      silhouette: p.silhouette.split(',').map(s => s.trim()),
-      color: p.color.split(',').map(s => s.trim()),
-      sizes: p.sizes.split(',').map(s => s.trim()),
+      price: parseInt(p.price) || 0,
+      designer: p.designer ? p.designer.split(',').map(s => s.trim()) : [],
+      silhouette: p.silhouette ? p.silhouette.split(',').map(s => s.trim()) : [],
+      color: p.color ? p.color.split(',').map(s => s.trim()) : [],
+      sizes: p.sizes ? p.sizes.replace(/"/g, '').split(',').map(s => s.trim()) : [], // Убираем кавычки
       category: p.category.trim(),
       image: p.image,
       description: p.description
     }));
 
+    console.log('Товары загружены:', products);
     renderProducts();
-    generateFilters(); // ← Автоматически создаём фильтры
+    generateFilters();
   },
-  error: function() {
-    document.getElementById('products').innerHTML = '<p style="color:red;">Ошибка загрузки товаров.</p>';
+  error: function(err) {
+    console.error('Ошибка CSV:', err);
+    document.getElementById('products').innerHTML = 'Ошибка загрузки данных.';
   }
 });
 
