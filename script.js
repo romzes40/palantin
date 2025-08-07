@@ -1,4 +1,4 @@
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYtbxwqQLeCdouFQ4uIyTsQIg21nZd06QAX9QpyqfvVG_HvlgEi6LkYFNZSvs5JvO8dP09oeRKnONr/pub?output=csv' + Date.now(); // Замени на публичную ссылку, если нужно
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTM9mVOhQaC5X7sLyn6A6euQEZfHPdiUq0ICwcXfE1koroL1wp-Xcx1Fcfk0EmwVYsDKUV5tu7WQn6M/pub?output=csv' + Date.now(); // Замени на публичную ссылку, если нужно
 let products = [];
 let cart = [];
 
